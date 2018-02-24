@@ -1,0 +1,21 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+
+  <h1>
+    <span *ngIf="user; else placeholder">
+       {{user.name}}!!
+    </span>
+    <ng-template #placeholder>(Your name will appear when the laravel setup is complete)</ng-template>
+  </h1>
+</div>
+<nav>
+  <a routerLink="/getemp">List Employee</a>
+  <a routerLink="/register">Register Employee</a>
+  <!-- <app-employee-list></app-employee-list> -->
+</nav>
+<router-outlet>
+	<app-employee-list></app-employee-list>
+	<!-- <app-registration></app-registration> -->
+</router-outlet>
+
+
