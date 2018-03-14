@@ -14,8 +14,7 @@ export class EmployeeListComponent implements OnInit {
   ngOnInit() {
   	console.log("I am here-3.");
   	// Make the HTTP request:
-    this.http.get<Employee>('http://localhost:8000/get-emp').subscribe(data => {
-      console.log(data);
+      this.http.get<Employee>('http://localhost:8000/getemp').subscribe(data => {
       this.employee = data;
     });
   }

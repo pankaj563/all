@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Response;
 use App\Employee;
-use Illuminate\Support\Facades\Input;
+
+
 
 class HomeController extends Controller
 {
@@ -16,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -31,5 +33,12 @@ class HomeController extends Controller
 
     public function getEmp(){
         return Response::json(Employee::get()); 
+    }
+
+    public function regEmp(Request $request){
+
+        $data = $request->all();
+
+        return Employee::create($data);
     }
 }

@@ -29,5 +29,12 @@ Route::get('/auth', function () {
     return Auth::user();
 });
 
+/*Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function()
+{
+    Route::get('dashboard', function() {} );
+});*/
+
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/get-emp', 'HomeController@getEmp')->name('get-emp');
+Route::get('/getemp', 'HomeController@getEmp')->name('get-emp');
+Route::get('/regEmp', 'HomeController@regEmp');
+Route::post('/regEmp', 'HomeController@regEmp');
