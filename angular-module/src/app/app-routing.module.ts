@@ -9,7 +9,8 @@ console.log("I am here-app-route-1.");
 
 const routes: Routes = [
   { path: 'getemp', component: EmployeeListComponent },
-  { path: 'register', component: RegistrationComponent }
+  { path: 'register', component: RegistrationComponent },
+  { path: 'register/:id', component: RegistrationComponent }
 
 ];
 

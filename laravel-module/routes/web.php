@@ -38,3 +38,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/getemp', 'HomeController@getEmp')->name('get-emp');
 Route::get('/regEmp', 'HomeController@regEmp');
 Route::post('/regEmp', 'HomeController@regEmp');
+Route::get('/getemp/{id}', 'HomeController@getEmpbyId')->name('get-emp');
+Route::post('/regEmpUpdate', 'HomeController@regEmpUpdate');
+

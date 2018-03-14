@@ -41,4 +41,16 @@ class HomeController extends Controller
 
         return Employee::create($data);
     }
+
+    public function getEmpbyId($id){
+        return Response::json(Employee::where('id', $id)->first());   
+    }
+
+    public function regEmpUpdate(Request $request){
+        $emp = Employee::find($request->id);
+        $emp->name    = $request->name;
+        $emp->address = $request->address;
+        $emp->company = $request->company;
+        return Response::json($emp->save());
+    }
 }

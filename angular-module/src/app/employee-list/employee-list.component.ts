@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Employee } from '../Employee';
+import { NgForm } from '@angular/forms';
 console.log("I am here-1.");
 @Component({
   selector: 'app-employee-list',
@@ -18,5 +19,11 @@ export class EmployeeListComponent implements OnInit {
       this.employee = data;
     });
   }
+
+  /*editEmp(id){
+    this.http.get<Employee>('http://localhost:8000/getempbyId/'+id).subscribe(data => {
+      this.employee = data;
+    });
+  }*/
 
 }

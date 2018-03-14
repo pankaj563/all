@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { Employee } from '../Employee';
 import { HttpHeaders } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router'; 
+import { ActivatedRoute } from '@angular/router';
 console.log("EmployeeEmployeeEmployeeEmployeeEmployeeEmployee");
 console.log(Employee);
 
@@ -34,13 +36,16 @@ const httpOptions = {
 
 export class RegistrationComponent implements OnInit {
   employee: Employee;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private route: ActivatedRoute) { }
 
   ngOnInit() {
-      this.http.get<Employee>('http://localhost:8000/getemp').subscribe(data => {
-      console.log(data);
-      this.employee = data;
-    });
+      
+    this.route.params.subscribe(params => {
+       console.log(params);
+       console.log(+params['id']);
+       this.doSearch(params['id']);
+    }); 
+    
   }
 
   onSubmit() { this.submitted = true; }
@@ -55,6 +60,26 @@ export class RegistrationComponent implements OnInit {
     this.http.post('http://localhost:8000/regEmp',form.value,httpOptions).subscribe((data:any[]) => {console.log(data)});
     //this.http.post<Employee>(this.employee, httpOptions);
   }
+
+  registerUpdate(form: NgForm){
+    console.log("pankaj maurya");
+    console.log(form.value);
+    //console.log(myform.value);
+    //var body = "address=" + d.address + "&company=" + d.company + "&name=" + d.name;
+    //console.log(body);
+    this.http.post('http://localhost:8000/regEmpUpdate',form.value,httpOptions).subscribe((data:any[]) => {console.log(data)});
+    //this.http.post<Employee>(this.employee, httpOptions);
+  }
+
+  doSearch(term: string) {
+    this.http.get<Employee>('http://localhost:8000/getemp/'+term).subscribe(data => {
+      console.log(data);
+      this.employee = data;
+    });
+  }
+
+
+
 }
 
 
