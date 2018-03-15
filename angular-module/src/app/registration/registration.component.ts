@@ -76,7 +76,12 @@ export class RegistrationComponent implements OnInit {
     //console.log(myform.value);
     //var body = "address=" + d.address + "&company=" + d.company + "&name=" + d.name;
     //console.log(body);
-    this.http.post('http://localhost:8000/regEmpUpdate',form.value,httpOptions).subscribe((data:any[]) => {console.log(data)});
+    this.http.post('http://localhost:8000/regEmpUpdate',form.value,httpOptions).subscribe((data:any[]) => {console.log(data)
+      this.flashMessagesService.show('Employee Updated Successfully.', {
+        classes: ['alert', 'alert-success'], // You can pass as many classes as you need
+        timeout: 3000, // Default is 3000
+      });
+    });
     
     //this.http.post<Employee>(this.employee, httpOptions);
   }
