@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './User';
+
 console.log("I am here-app-component-1.");
 
 @Component({

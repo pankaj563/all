@@ -7,6 +7,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router'; 
 import { ActivatedRoute } from '@angular/router';
+import { FlashMessagesService } from 'ngx-flash-messages';
 console.log("EmployeeEmployeeEmployeeEmployeeEmployeeEmployee");
 console.log(Employee);
 
@@ -36,7 +37,7 @@ const httpOptions = {
 
 export class RegistrationComponent implements OnInit {
   employee: Employee;
-  constructor(private http: HttpClient,private route: ActivatedRoute) { }
+  constructor(private http: HttpClient,private route: ActivatedRoute,private flashMessagesService: FlashMessagesService) { }
 
   ngOnInit() {
       
@@ -45,6 +46,8 @@ export class RegistrationComponent implements OnInit {
        console.log(+params['id']);
        this.doSearch(params['id']);
     }); 
+
+
     
   }
 
@@ -57,7 +60,13 @@ export class RegistrationComponent implements OnInit {
     //console.log(myform.value);
     //var body = "address=" + d.address + "&company=" + d.company + "&name=" + d.name;
     //console.log(body);
-    this.http.post('http://localhost:8000/regEmp',form.value,httpOptions).subscribe((data:any[]) => {console.log(data)});
+    this.http.post('http://localhost:8000/regEmp',form.value,httpOptions).subscribe((data:any[]) => {console.log(data)
+      this.flashMessagesService.show('Employee Registered Successfully.', {
+        classes: ['alert', 'alert-success'], // You can pass as many classes as you need
+        timeout: 3000, // Default is 3000
+      });
+    });
+    
     //this.http.post<Employee>(this.employee, httpOptions);
   }
 
@@ -68,6 +77,7 @@ export class RegistrationComponent implements OnInit {
     //var body = "address=" + d.address + "&company=" + d.company + "&name=" + d.name;
     //console.log(body);
     this.http.post('http://localhost:8000/regEmpUpdate',form.value,httpOptions).subscribe((data:any[]) => {console.log(data)});
+    
     //this.http.post<Employee>(this.employee, httpOptions);
   }
 
