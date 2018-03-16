@@ -37,7 +37,7 @@ const httpOptions = {
 
 export class RegistrationComponent implements OnInit {
   employee: Employee;
-  constructor(private http: HttpClient,private route: ActivatedRoute,private flashMessagesService: FlashMessagesService) { }
+  constructor(private http: HttpClient,private route: ActivatedRoute,private flashMessagesService: FlashMessagesService,private router: Router) { }
 
   ngOnInit() {
       
@@ -65,6 +65,7 @@ export class RegistrationComponent implements OnInit {
         classes: ['alert', 'alert-success'], // You can pass as many classes as you need
         timeout: 3000, // Default is 3000
       });
+      this.router.navigate(['getemp']);
     });
     
     //this.http.post<Employee>(this.employee, httpOptions);
@@ -81,6 +82,7 @@ export class RegistrationComponent implements OnInit {
         classes: ['alert', 'alert-success'], // You can pass as many classes as you need
         timeout: 3000, // Default is 3000
       });
+      this.router.navigate(['getemp']);
     });
     
     //this.http.post<Employee>(this.employee, httpOptions);
@@ -92,9 +94,6 @@ export class RegistrationComponent implements OnInit {
       this.employee = data;
     });
   }
-
-
-
 }
 
 

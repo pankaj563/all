@@ -38,7 +38,6 @@
 		  <button type="button" class="btn btn-info pull-right" *ngIf="!employee.id" [disabled]="!heroForm.form.valid" (click)="register(heroForm.form); heroForm.reset()">Submit</button> 
 
 		  <button type="button" class="btn btn-info pull-right" *ngIf="employee.id" [disabled]="!heroForm.form.valid" (click)="registerUpdate(heroForm.form); heroForm.reset()" >Update</button> 
-
 		</div>
 	</form>
   </div>

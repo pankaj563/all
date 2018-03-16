@@ -40,4 +40,5 @@ Route::get('/regEmp', 'HomeController@regEmp');
 Route::post('/regEmp', 'HomeController@regEmp');
 Route::get('/getemp/{id}', 'HomeController@getEmpbyId')->name('get-emp');
 Route::post('/regEmpUpdate', 'HomeController@regEmpUpdate');
+Route::get('/delete-emp/{id}', 'HomeController@deleteEmp');
 

@@ -53,4 +53,8 @@ class HomeController extends Controller
         $emp->company = $request->company;
         return Response::json($emp->save());
     }
+
+    public function deleteEmp($id){
+        return Response::json(Employee::where('id', $id)->delete());  
+    }
 }
